@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+    <h1 id="titles_on_page"><b>Registration</b></h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('registration_page') }}" method="post">
+        <p id="text_login_reg">Nickname</p>
+        <p><span>{{ form.nick(id='stringname') }}</span></p>
+
+        <p id="text_login_reg">Email </p>
+        <p><span>{{ form.email(id='stringname') }}</span></p>
+
+        <p id="text_login_reg">Password </p>
+        <p><span>{{ form.password(id='stringname') }}</span></p>
+
+
+        <p><a href="{{ url_for('login_page') }}">Login in</a></p>
+
+        <p><input style="font-weight: 600;margin-top: 20px" id="login" value="Register" type="submit" alt="forum"/></p>
+    </form>
+{% endblock %}

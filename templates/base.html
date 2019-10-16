@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/favicon.ico" rel="shortcut icon" type="image/favicon">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body >
+    <header style="background-image: url({{ url_for("static", filename="fon1.png") }});">
+            <div id = "center">
+                <a href="{{ url_for("main_page") }}" id="head">F O R U M</a>
+
+                {% if session['nick'] %}
+                    <a href="{{ url_for('profile_page') }}" style="margin-left: 10px; color:white; font-size: xx-large">{{ session['nick'] }}</a>
+                {% else %}
+                    <form style="display: inline" action="{{ url_for('profile_page') }}">
+                        <button style="float: right" type="submit" id="login">
+                            <img src="{{ url_for("static", filename="login.png") }}" width="40" height="40" alt="ops image">
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+    </header>
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer >
+        <p style="text-align:center;"><b>Creator's contacts: <span><a href="https://vk.com/heycrazypeople">Me</a></span></b></p>
+        <p style="text-align:center;margin-top: 10px">© 2019 </p>
+    </footer>
+</body>
+</html>

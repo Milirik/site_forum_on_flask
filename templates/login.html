@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <h1 id="titles_on_page"><b>Login</b></h1>
+    <p id="text_login_reg">Nickname {% if incorrect=='f_us' %}<span id="er">Такого ника не существует</span>{% endif %}</p>
+
+    <form action="{{ url_for('login_page') }}" method="post">
+        <p><span style="width: 200px">{{ form.nick(id='stringname') }}</span></p>
+
+
+        <p id="text_login_reg">Password {% if incorrect=='f_pas' %}<span id="er">Пароль введен не правильно</span>{% endif %}</p>
+        <p><span style="width: 200px">{{ form.password(id='stringname') }}</span></p>
+
+
+            <a href="{{ url_for('registration_page') }} ", methods="post">Registration</a>
+
+
+        <p><input style="font-weight: 600;margin-top: 20px" id="login" value="Login in" type="submit" alt="forum"/></p>
+    </form>
+{% endblock %}

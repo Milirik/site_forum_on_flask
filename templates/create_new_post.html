@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create new post
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('create_new_post_page') }}" method="post">
+        <h1 id="titles_on_page"><b>Create new post</b></h1>
+        <p><b>Title</b></p>
+        <p>{{ form.name(id='stringname', maxlength=20) }}</p>
+        <p><b>Body</b></p>
+        <p>{{ form.text(id='textname', maxlength=1185) }}</p>
+        <p><input style="font-weight: 600" id="login" value="Create" type="submit" alt="forum"/></p>
+
+    </form>
+{% endblock %}

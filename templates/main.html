@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ForumKV
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('create_new_post_page') }}"><input style="float: right;font-weight: 600;margin:20px 0 20px 0" id="login" value="Add new post" type="submit" alt="forum"/></form>
+
+    <h1 id="titles_on_page"><b>Main page</b></h1>
+    {% for i in posts[::-1] %}
+
+        <p>
+            <a href="{{ url_for('for_profile_page', for_profile=i.users1[0].nick) }}" id="nicks">{{ i.users1[0].nick }}</a>
+            <span id="post_title"><b>: {{ i.title }}</b></span>
+        </p>
+
+        <p id="post_body">{{ i.body }}</p>
+        <span>Date: {{ i.created_time }} | Comments: {{ i.answers_|length }}</span>
+        <form action="{{ url_for('discuss_page', post_id = i.id)}}" method="Post">
+            <input style="float: right;font-weight: 600;margin:-20px 0 40px 90%" id="login" value="Discuss" type="submit" alt="forum"/>
+        </form>
+
+    {% endfor %}
+{% endblock %}

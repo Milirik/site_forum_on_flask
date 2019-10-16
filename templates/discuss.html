@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Discuss
+{% endblock %}
+
+
+{% block content %}
+    <h1 id="titles_on_page"><b>Discussion post</b></h1>
+    <p><span id="nicks">{{ post.users1[0].nick }}</span><span id="post_title"><b>: {{ post.title }}</b></span></p>
+    <p id="post_body">{{ post.body }}</p>
+
+    <form action="{{ url_for('create_new_answer_page', post_id=post.id) }}">
+        <input style="float: right;font-weight: 600;margin:60px 0 20px 0" id="login" value="Comment this post" type="submit" alt="forum"/>
+    </form>
+
+    <h1 style="margin-top: 40px" id="titles_on_page"><p><b>Answers</b></p></h1>
+
+    {% if post.answers_ %}
+        {% for i in post.answers_  %}
+            <p><span id="nicks">{{ i.users2[0].nick }}</span><span style="font-size: large"><b>:</b> {{ i.body }}</span></p>
+        {% endfor %}
+    {% else %}
+         <p><b>No one comments</b></p>
+    {% endif %}
+{% endblock %}
