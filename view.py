@@ -87,7 +87,6 @@ def registration_page() ->'html':
                             active=False)
             db.session.add(new_user)
             db.session.commit()
-            is_successfull_registr = True
             return render_template('login.html', form=f, is_successfull_registr = True)
         else:
             return render_template('registr.html', form=f, is_successfull_registr = False)
