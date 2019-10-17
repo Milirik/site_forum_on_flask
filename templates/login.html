@@ -6,6 +6,9 @@
 
 {% block content %}
     <h1 id="titles_on_page"><b>Login</b></h1>
+    {% if is_successfull_registr %}
+        <span style="color: green;"><b>Successfull registration</b></span>
+    {% endif %}
     <p id="text_login_reg">Nickname {% if incorrect=='f_us' %}<span id="er">Такого ника не существует</span>{% endif %}</p>
 
     <form action="{{ url_for('login_page') }}" method="post">

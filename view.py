@@ -87,12 +87,12 @@ def registration_page() ->'html':
                             active=False)
             db.session.add(new_user)
             db.session.commit()
-            print('Registr')
-            return redirect(url_for('login_page'))
+            is_successfull_registr = True
+            return render_template('login.html', form=f, is_successfull_registr = True)
         else:
-            return render_template('registr.html', form=f)
+            return render_template('registr.html', form=f, is_successfull_registr = False)
     else:
-        return render_template('registr.html', form=f)
+        return render_template('registr.html', form=f, is_successfull_registr = True)
 
 @app.route("/login", methods=['GET', 'POST'])
 @forbid_transition_if_logged_in
